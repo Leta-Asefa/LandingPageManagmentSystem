@@ -18,8 +18,14 @@ return new class extends Migration
             $table->String('Slogan');
             $table->json('ServiceHeader');
             $table->json('ServiceDescription');
+            $table->json('ProjectHeader');
+            $table->json('ProjectDescription');
             $table->json('TestimonialText');
             $table->json('CustomerName');
+            $table->String('Phone');
+            $table->String('Email');
+            $table->String('Address');
+            $table->String('SocialMediaLink');
             $table->timestamps();
         });
     }

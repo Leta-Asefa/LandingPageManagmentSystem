@@ -14,14 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('getHome', [HomeController::class,"home"]);
+Route::get('createHome', [HomeController::class,"createHome"]);
 Route::get('getHome/{id}', [HomeController::class,"getHome"]);
-Route::get('getServices', [HomeController::class,"services"]);
-Route::get('getRecentwork', [HomeController::class,"recentWork"]);
-Route::get('getTestimonials', [HomeController::class,"testimonials"]);
-Route::get('getAbout', [HomeController::class,"about"]);
-Route::get('getContact', [HomeController::class,"contact"]);
-
+Route::get('getJsonHome/{id}', [HomeController::class,"getJsonHome"]);
+Route::get('updateHome', [HomeController::class,"updateHome"]);
+Route::get('deleteHome/{id}', [HomeController::class,"deleteHome"]);
 
 Route::get('welcome',function(){
 

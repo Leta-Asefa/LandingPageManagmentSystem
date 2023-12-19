@@ -37,7 +37,7 @@
                 <a class="nav-link" href="#services">Services</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#recentwork">Recent Works</a>
+                <a class="nav-link" href="#recentWorks">Recent Works</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#testimonials">Testimonials</a>
@@ -61,23 +61,39 @@
       <p class="lead"> <h3>{{$home->Slogan}}</h3></p> <br>
 
         <h6>Feel free to Contact Us</h6> <br>
-        <h6>Phone : 0987654321</h6>
-        <h6>Email : marak123@gmail.com</h6>
-        <h6>Address : Addis Ababa , Bole</h6>
-        <h6>LinkedIn : linkedin.com</h6> <br><br><br>
+        <h6>Phone : {{$home->Phone}}</h6>
+        <h6>Email : {{$home->Email}}</h6>
+        <h6>Address : {{$home->Address}}</h6>
+        <h6>Social Media Link : {{$home->SocialMediaLink}}</h6>  <br><br><br>
         <a href="#contact" class="btn btn-light btn-lg">Get Started</a><br><br><br><br><br>
     </div>
 </header>
 
-<!-- Features Section -->
+<!-- Services Section -->
 <section id="services" class="py-5">
     <div class="container">
+    <h2 class="text-center">Our Great Services</h2>
         <div class="row">
        @for($i=0;$i<count($home->ServiceHeader);$i++)
         <div class="col-lg-4">
                 <i class="fas fa-rocket feature-icon mb-3"></i>
                 <h3>{{$home->ServiceHeader[$i]}}</h3>
                 <p>{{$home->ServiceDescription[$i]}}</p>
+            </div>
+            @endfor
+        </div>
+    </div>
+</section>
+<!-- Recent Work Section -->
+<section id="recentWorks" class="py-5">
+    <div class="container">
+    <h2 class="text-center">Our Recent Projects</h2>
+        <div class="row">
+       @for($i=0;$i<count($home->ProjectHeader);$i++)
+        <div class="col-lg-4">
+                <i class="fas fa-rocket feature-icon mb-3"></i>
+                <h3>{{$home->ProjectHeader[$i]}}</h3>
+                <p>{{$home->ProjectDescription[$i]}}</p>
             </div>
             @endfor
         </div>

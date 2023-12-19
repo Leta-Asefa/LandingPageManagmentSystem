@@ -9,10 +9,12 @@ class Home extends Model
 {
     //use HasFactory;
 
-    protected $fillable = ['BrandName','HeadLine','Slogan','ServiceHeader','ServiceDescription','TestimonialText','CustomerName'];
+    protected $fillable = ['BrandName','HeadLine','Slogan','ServiceHeader','ServiceDescription','ProjectHeader','ProjectDescription','TestimonialText','CustomerName','Phone','Email','Address','SocialMediaLink'];
 
     protected $casts = ['ServiceHeader' => 'array',
                         'ServiceDescription' => 'array',
+                        'ProjectHeader' => 'array',
+                        'ProjectDescription' => 'array',
                         'TestimonialText' => 'array',
                         'CustomerName' => 'array'];
 
@@ -20,6 +22,20 @@ class Home extends Model
     public function setServiceHeaderAttribute($value)
     {
         $this->attributes['ServiceHeader'] = json_encode($value);
+    }
+
+
+
+    // Set the JSON data attribute
+    public function setProjectDescriptionAttribute($value)
+    {
+        $this->attributes['ProjectDescription'] = json_encode($value);
+    }
+
+    // Set the JSON data attribute
+    public function setProjectHeaderAttribute($value)
+    {
+        $this->attributes['ProjectHeader'] = json_encode($value);
     }
 
 
