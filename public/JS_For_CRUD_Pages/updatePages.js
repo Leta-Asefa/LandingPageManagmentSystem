@@ -1,0 +1,17 @@
+let brandName=document.getElementById('brandName');
+let headLine=document.getElementById('headLine');
+let slogan=document.getElementById('slogan');
+let phone=document.getElementById('phone');
+let email=document.getElementById('email');
+let address=document.getElementById('address');
+let socialMediaLink=document.getElementById('socialMediaLink');
+let serviceHeader=document.getElementById('serviceHeader');
+let serviceDescription=document.getElementById('serviceDescription');
+let serviceAddButton=document.getElementById('serviceAddButton');
+let projectHeader=document.getElementById('projectHeader');
+let projectDescription=document.getElementById('projectDescription');
+let projectAddButton=document.getElementById('projectAddButton');
+let testimonialHeader=document.getElementById('testimonialHeader');
+let customerName=document.getElementById('customerName');
+let testimonialAddButton=document.getElementById('testimonialAddButton');
+let submitButton=document.getElementById('submitButton');

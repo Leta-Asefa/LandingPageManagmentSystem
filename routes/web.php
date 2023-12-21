@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('createHome', [HomeController::class,"createHome"]);
+//Route::post('createHome', [HomeController::class,"createHome"]);
 Route::get('getHome/{id}', [HomeController::class,"getHome"]);
 Route::get('getJsonHome/{id}', [HomeController::class,"getJsonHome"]);
 Route::post('updateHome', [HomeController::class,"updateHome"]);
