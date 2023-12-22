@@ -24,8 +24,8 @@
 
         <!-- Search Bar -->
         <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Landing Page Id" aria-label="Search">
-            <button class="btn btn-outline-primary" type="submit">Search</button>
+            <input id="searchBar" class="form-control me-2" type="search" placeholder="Landing Page Id" aria-label="Search">
+            <button id="searchButton" class="btn btn-outline-primary" type="button">Search</button>
         </form>
     </div>
 
@@ -91,7 +91,11 @@
                             <textarea class="form-control" id="serviceDescription" rows="3" placeholder="Description "></textarea>
                         </div>
                         <div class="col text-center">
+                            <button id="servicePreButton" type="button" class="btn btn-info mt-4">Pre</button>
+                       
                             <button id="serviceAddButton" type="button" class="btn btn-info mt-4">Add</button>
+                       
+                            <button id="serviceNextButton" type="button" class="btn btn-info mt-4">Next</button>
                         </div>
                     </div>
         
@@ -107,7 +111,11 @@
                             <textarea class="form-control" id="projectDescription" rows="3" placeholder="Description "></textarea>
                         </div>
                         <div class="col text-center">
+                            <button id="projectPreButton" type="button" class="btn btn-info mt-4">Pre</button>
+                       
                             <button id="projectAddButton" type="button" class="btn btn-info mt-4">Add</button>
+                            
+                        <button id="projectNextButton" type="button" class="btn btn-info mt-4">Next</button>
                         </div>
                     </div>
         
@@ -123,7 +131,11 @@
                             <textarea class="form-control" id="customerName" rows="3" placeholder="Description"></textarea>
                         </div>
                         <div class="col text-center">
-                            <button id="testimonialAddButton" type="button" class="btn btn-info mt-4">Add</button>
+                        <button id="testimonialPreButton" type="button" class="btn btn-info mt-4">Pre</button>
+                       
+                        <button id="testimonialAddButton" type="button" class="btn btn-info mt-4">Add</button>
+                         
+                        <button id="testimonialNextButton" type="button" class="btn btn-info mt-4">Next</button>
                         </div>
                     </div>
         
@@ -138,7 +150,8 @@
 
             <!-- Submit Button -->
             <div class="mt-4 text-center">
-                <button id="submitButton" type="submit" class="btn btn-primary">Generate The Page</button>
+                <button id="submitButton" type="button" class="btn btn-primary">Update The Page</button>
+                <a id="browsingLink"  class="text-center" style="display:none;"><button class="btn btn-info">Go To The Updated Page</button></a>
             </div>
 
 
@@ -149,10 +162,7 @@
         
             
 
-            <!-- Submit Button -->
-            <div class="mt-4 text-center">
-                <button type="submit" class="btn btn-primary">Update The Page</button>
-            </div>
+            
 
 
             <br><br><br>

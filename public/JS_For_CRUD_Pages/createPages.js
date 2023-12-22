@@ -13,7 +13,8 @@ let projectDescription=document.getElementById('projectDescription');
 let projectAddButton=document.getElementById('projectAddButton');
 let testimonialHeader=document.getElementById('testimonialHeader');
 let customerName=document.getElementById('customerName');
-let testimonialAddButton=document.getElementById('testimonialAddButton');
+let testimonialAddButton = document.getElementById('testimonialAddButton');
+let browsingLink = document.getElementById('browsingLink');
 let submitButton = document.getElementById('submitButton');
 
 let serviceHeaderArray = [];
@@ -23,6 +24,7 @@ let projectDescriptionArray = [];
 let testimonialHeaderArray = [];
 let customerNameArray = [];
 
+let link;
 
 serviceAddButton.onclick = function () {
 
@@ -55,40 +57,45 @@ testimonialAddButton.onclick = function () {
 
 submitButton.onclick = function () {
 
-    let data = [{
-        "brand": brandName.value,
-        "HeadLine": headLine.value,
-        "Slogan": slogan.value,
-        "ServiceHeader": serviceHeaderArray,
-        "ServiceDescription": serviceDescriptionArray,
-        "ProjectHeader": projectHeaderArray,
-        "ProjectDescription": projectDescriptionArray,
-        "TestimonialText": testimonialHeaderArray,
-        "CustomerName": customerNameArray,
-        "Phone": phone.value,
-        "Email": email.value,
-        "Address": address.value,
-        "SocialMediaLink": socialMediaLink.value
-    } ]
+    let data = [
+        {
+            "BrandName": brandName.value,
+            "HeadLine": headLine.value,
+            "Slogan": slogan.value,
+            "ServiceHeader": serviceHeaderArray,
+            "ServiceDescription": serviceDescriptionArray,
+            "ProjectHeader": projectHeaderArray,
+            "ProjectDescription": projectDescriptionArray,
+            "TestimonialText": testimonialHeaderArray,
+            "CustomerName": customerNameArray,
+            "Phone": phone.value,
+            "Email": email.value,
+            "Address": address.value,
+            "SocialMediaLink": socialMediaLink.value
+        }
 
+    ]
     
 
 
-    let jsonData = JSON.stringify(data)
 
-
-
-    fetch("http://localhost:8000/api/createHome  ", {
+    fetch("http://localhost:8000/api/createHome", {
     
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: jsonData
+        body: JSON.stringify(data)
     
     
     }).then((res) => res.text())
-        .then((data) => console.log(data))
+        .then((data) => {
+            link="../api/getHome/"+data
+            browsingLink.href = link;
+            browsingLink.style.display = "contents";
+        
+        })
 
-
+    
+   
 }
 
 

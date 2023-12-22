@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::post('createHome', [HomeController::class,"createHome"]);
-Route::get('getHome/{id}', [HomeController::class,"getHome"]);
-Route::get('getJsonHome/{id}', [HomeController::class,"getJsonHome"]);
-Route::post('updateHome', [HomeController::class,"updateHome"]);
-Route::get('deleteHome/{id}', [HomeController::class,"deleteHome"]);
+// Route::get('getHome/{id}', [HomeController::class,"getHome"]);
+//Route::get('getJsonHome/{id}', [HomeController::class,"getJsonHome"]);
+//Route::post('updateHome', [HomeController::class,"updateHome"]);
+// Route::get('deleteHome/{id}', [HomeController::class,"deleteHome"]);
 
 Route::get('welcome',function(){
 

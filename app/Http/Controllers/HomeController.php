@@ -6,6 +6,8 @@ use App\Models\Home;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
+use function PHPUnit\Framework\isEmpty;
+
 class HomeController extends Controller
 {
     
@@ -20,6 +22,9 @@ class HomeController extends Controller
         $home = new Home();
     
         $jsonData = $request->json()->all();
+        if (!$jsonData) {
+            return response()->json(['error' => 'JSON body is falsy'], 400);
+        }
        
         $home->BrandName = $jsonData[0]["BrandName"]; 
         $home->HeadLine = $jsonData[0]['HeadLine'];
@@ -37,7 +42,7 @@ class HomeController extends Controller
 
         $home->save();
         
-        return "/getHome/$home->id";
+        return "$home->id";
     }
 
 
@@ -51,11 +56,13 @@ class HomeController extends Controller
         return $home->toJson();
     }
     
-    public function updateHome(Request $request )
+    public function updateHome($id,Request $request )
     {
+
+
         $jsonData = $request->json()->all();
-        
-        $home =Home::find($jsonData[0]['id']);
+    
+        $home =Home::find($id);
        
         $home->BrandName = $jsonData[0]["BrandName"]; 
         $home->HeadLine = $jsonData[0]['HeadLine'];
@@ -71,9 +78,9 @@ class HomeController extends Controller
         $home->Address=$jsonData[0]['Address'];
         $home->SocialMediaLink=$jsonData[0]['SocialMediaLink'];
 
-        $home->save();
+        $home->update();
         
-        return "/getHome/$home->id";
+        return "$home->id";
 
     }
     
@@ -85,4 +92,12 @@ class HomeController extends Controller
 
     }
     
+
+    public function getAllHomes(){
+
+        $rows=Home::all(['id','BrandName']);
+       
+        return response()->json($rows);
+
+    }
 }
