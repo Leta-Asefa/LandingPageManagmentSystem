@@ -48,7 +48,10 @@ class HomeController extends Controller
 
     public function getHome($id){
         $home=Home::find($id);
+
+        if($home!=null)
         return view("home")->with('home',$home);
+        return  "Invalid Id";
     }
 
     public function getJsonHome($id){
