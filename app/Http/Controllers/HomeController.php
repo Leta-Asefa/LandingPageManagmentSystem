@@ -60,7 +60,9 @@ class HomeController extends Controller
 
     public function getJsonHome($id){
         $home=Home::find($id);
+        if($home!=null)
         return $home->toJson();
+        return response()->json(['response' => 'Invaid Id']);
     }
     
     public function updateHome($id,Request $request )
@@ -106,7 +108,7 @@ class HomeController extends Controller
     public function getAllHomes(){
 
         $rows=Home::all(['id','BrandName']);
-       
+        
         return response()->json($rows);
 
     }

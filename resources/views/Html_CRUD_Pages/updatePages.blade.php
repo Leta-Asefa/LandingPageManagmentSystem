@@ -27,6 +27,7 @@
             <input id="searchBar" class="form-control me-2" type="search" placeholder="Landing Page Id" aria-label="Search">
             <button id="searchButton" class="btn btn-outline-primary" type="button">Search</button>
         </form>
+        <h6 id="response" class="text-center text-danger" style="display: none;">Invalid Id</h6>
     </div>
 
     <div class="container mt-4">
@@ -202,6 +203,9 @@ let searchBar = document.getElementById('searchBar');
 let searchButton = document.getElementById('searchButton');
 let browsingLink = document.getElementById('browsingLink');
 let submitButton = document.getElementById('submitButton');
+
+let respose = document.getElementById('response');
+
 
 let servicePreButton = document.getElementById('servicePreButton');
 let serviceNextButton = document.getElementById('serviceNextButton');
@@ -455,7 +459,39 @@ searchButton.onclick = function () {
     fetch("http://localhost:8000/api/getJsonHome/" + id)
         .then((res) => res.json())
         .then((data) => {
+            if(data.response=='Invaid Id'){
+
+            serviceHeaderArray = ''
+            serviceDescriptionArray = ''
+            projectHeaderArray = ''
+            projectDescriptionArray = ''
+            testimonialHeaderArray = ''
+            customerNameArray= ''
+            
+            
+            
+            brandName.value = ''
+            headLine.value =''
+            slogan.value =''
+            phone.value = ''
+            email.value = ''
+            address.value = ''
+            socialMediaLink.value = ''
+            serviceHeader.value=''
+            serviceDescription.value=''
+            projectHeader.value=''
+            projectDescription.value=''
+            testimonialHeader.value =''
+            customerName.value = ''
+            
+
+                    respose.style.display='contents'
+                    respose.innerHTML=data.response
+                    return
+            }
            
+            respose.style.display='none'
+
             serviceHeaderArray = data.ServiceHeader
             serviceDescriptionArray = data.ServiceDescription
             projectHeaderArray = data.ProjectHeader

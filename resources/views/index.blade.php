@@ -12,7 +12,7 @@
 
     <!-- Header -->
     <header class="bg-primary text-white text-center py-3">
-        <h1>Landing Page Managment Dashboard view </h1>
+        <h1>Landing Page Managment Dashboard</h1>
     </header>
     <a href="{{ url('/') }}"><button class="btn btn-outline-primary">Login / Logout</button></a>
 
