@@ -7,16 +7,16 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script defer src="../JS_For_CRUD_Pages/deletePages.js"></script>
+  
 </head>
 <body>
 
     <!-- Header -->
     <header class="bg-primary text-white text-center py-3">
-        <h1>Landing Page Managment Dashboard </h1>
+        <h1>Landing Page Managment Dashboard</h1>
     </header>
 
-    <a href="../index.html"><button class="btn btn-outline-primary">  Back to Home</button></a>
+    <a href="{{ url('index') }}"><button class="btn btn-outline-primary">  Back to Home</button></a>
 
      <!-- Main Content -->
      <div class="container mt-4">
@@ -37,5 +37,42 @@
 
     <!-- Bootstrap JS (Optional, if you need JS features) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let searchBar = document.getElementById('searchBar');
+let deleteButton = document.getElementById('deleteButton');
+let response = document.getElementById('response');
+
+
+
+
+deleteButton.onclick = function () {
+    response.innerHTML=''
+        
+    
+    id = searchBar.value 
+
+    fetch("http://localhost:8000/api/deleteHome/" + id)
+        .then((res) => res.json())
+        .then((data) => {
+
+            if(data.response=="Deleted Successfully !")
+                response.classList.replace('text-danger','text-info')
+            else 
+                response.classList.replace('text-info','text-danger')
+
+                  response.innerHTML=data.response
+        
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        })
+    
+
+
+
+}
+
+    </script>
 </body>
 </html>

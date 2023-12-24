@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,28 +15,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::post('createHome', [HomeController::class,"createHome"]);
-// Route::get('getHome/{id}', [HomeController::class,"getHome"]);
-//Route::get('getJsonHome/{id}', [HomeController::class,"getJsonHome"]);
-//Route::post('updateHome', [HomeController::class,"updateHome"]);
-// Route::get('deleteHome/{id}', [HomeController::class,"deleteHome"]);
 
-Route::get('welcome',function(){
 
-    $category=strip_tags(request('category'));
+    Route::get('/',  function () { return view('auth/login'); });
+    Route::get('getPages', function () { return view('Html_CRUD_Pages/getPages');  });
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-    if(isset($category))
-        return "<h1>Category = ".$category."</h1>";
-     return "<h1>Welcome </h1>";
-});
 
-Route::get('store/{category}/{item}',function($category,$item){
 
-    $category=strip_tags($category);
-    $item=strip_tags($item);
-    if(isset($category))
-        return "<h1>Category = ".$category."</h1> <br> <h1>Item = ".$item."</h1>";
-     return "<h1>Welcome </h1>";
-});
+    Route::middleware(['auth'])->group(function () {
+        
+        Route::get('index', function () { return view('index'); });
+        Route::get('createPages', function () {  return view('Html_CRUD_Pages/createPages'); });
+        Route::get('deletePages', function () { return view('Html_CRUD_Pages/deletePages'); });
+        Route::get('updatePages', function () { return view('Html_CRUD_Pages/updatePages'); });
+            
+        
+    });
+
+    Auth::routes();
+
+
 
 

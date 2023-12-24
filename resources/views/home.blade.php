@@ -52,6 +52,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#contact">Contact</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="{{ url('/') }}">Log Out</a>
+            </li>
         </ul>
     </div>
 </nav>

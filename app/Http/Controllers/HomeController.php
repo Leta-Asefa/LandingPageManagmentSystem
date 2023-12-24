@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Home;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\Auth;
 use function PHPUnit\Framework\isEmpty;
 
 class HomeController extends Controller
@@ -13,7 +13,7 @@ class HomeController extends Controller
     
     public function index()
     {
-        
+       return view('auth/login');
     }
 
     public function createHome(Request $request)
@@ -47,11 +47,15 @@ class HomeController extends Controller
 
 
     public function getHome($id){
-        $home=Home::find($id);
+       
+     
+            $home=Home::find($id);
 
-        if($home!=null)
-        return view("home")->with('home',$home);
-        return  "Invalid Id";
+             if($home!=null)
+             return view("home")->with('home',$home);
+            return  "Invalid Id";
+
+        
     }
 
     public function getJsonHome($id){
@@ -90,9 +94,12 @@ class HomeController extends Controller
 
     public function deleteHome($id){
         $home=Home::find($id);
-        $home->delete();
-        return response()->json(['response'=>"Deleted Successfully !"]);
 
+        if($home!=null){
+            $home->delete();
+            return response()->json(['response'=>"Deleted Successfully !"]);
+        }
+        return response()->json(['response'=>"Invalid Id !"]);
     }
     
 
